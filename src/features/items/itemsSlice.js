@@ -1,37 +1,38 @@
 /*  HELPER FUNCTIONS */
 // auto-increment id
-const nextId = (list) => {
-  const maxId = list.reduce((maxId, listItem) => Math.max(listItem.id, maxId), -1)
+const nextId = (items) => {
+  const maxId = items.reduce((maxId, item) => Math.max(item.id, maxId), -1)
   return maxId + 1
 }
 
 /* STATE */
-const initialState = [
-  {
-    id: 0, 
-    title: 'Self-portrait', 
-    author: 'John Brown',
-    description: 'very nice', 
-    images: [],
-    reviews: []
-  },
-  {
-    id: 1, 
-    title: 'Vase', 
-    author: 'Annie Tommaly',
-    description: 'made it myself in one day', 
-    images: [],
-    reviews: []
-  },
-  {
-    id: 2, 
-    title: 'Birthday cake', 
-    author: 'Annie Tommaly',
-    description: 'looks good and tastes even better', 
-    images: [],
-    reviews: []
-  }
-]
+// const initialState = [
+//   {
+//     id: 0, 
+//     title: 'Self-portrait', 
+//     author: 'John Brown',
+//     description: 'very nice', 
+//     images: [],
+//     reviews: []
+//   },
+//   {
+//     id: 1, 
+//     title: 'Vase', 
+//     author: 'Annie Tommaly',
+//     description: 'made it myself in one day', 
+//     images: [],
+//     reviews: []
+//   },
+//   {
+//     id: 2, 
+//     title: 'Birthday cake', 
+//     author: 'Annie Tommaly',
+//     description: 'looks good and tastes even better', 
+//     images: [],
+//     reviews: []
+//   }
+// ]
+const initialState = []
 
 const itemsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -39,10 +40,11 @@ const itemsReducer = (state = initialState, action) => {
       return [
         ...state,
         {
-          id: nextId(state.items),
+          id: nextId(state),
           title: action.payload.title,
           description: action.payload.description,
-          images: action.payload.images
+          images: action.payload.images,
+          reviews: []
         }
       ]
     }
@@ -61,7 +63,7 @@ const itemsReducer = (state = initialState, action) => {
       })      
     }
     case 'items/itemDeleted': {
-      return state.filter(item => item.id !== action.payload.id)
+      return state.filter(item => item.id !== action.payload)
     }
     case 'items/reviewAdded': {
       return state.map(item => {

@@ -28,8 +28,30 @@ const initialState = {
 
 
 ***** ACTIONS *****
+
 {type: 'items/itemAdded', payload: {title, description, images}}
 {type: 'items/itemEdited', payload: {itemId, title, description, images}}
 {type: 'items/itemDeleted', payload: itemId}
 {type: 'items/reviewAdded', payload: {itemId, author, rating, content}}
 {type: 'filters/statusChanged', payload: filterValue}
+
+
+***** PAGES AND COMPONENTS *****
+
+<App>
+--<Header>
+--|HomePage|
+----<ItemsList>
+------<Item>
+----<Filters>
+--|DetailsPage|
+----<ItemDetails>
+----<Reviews>
+------<Review>
+--|AddItemPage|
+--|LoginPage|
+----<LoginForm>
+--|SignupPage|
+----<SignupForm>
+
+
