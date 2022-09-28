@@ -1,0 +1,35 @@
+***** STATE *****
+
+const initialState = {
+  items: [{
+      id: 0, 
+      title: 'Self-portrait', 
+      author: 'John Brown',
+      description: 'very nice', 
+      images: [{
+          id: 0,
+          url: './image1.png',
+          isMainImage: false
+        }
+      ],
+      reviews: [{
+          id: 0,
+          author: 'Jane Sparrow',
+          rating: 4,
+          content: 'very nice picture'
+        }
+      ]
+    }
+  ],
+  filters: {
+    status: 'all'       // 'all' | 'topRated',
+  }
+}
+
+
+***** ACTIONS *****
+{type: 'items/itemAdded', payload: {title, description, images}}
+{type: 'items/itemEdited', payload: {itemId, title, description, images}}
+{type: 'items/itemDeleted', payload: itemId}
+{type: 'items/reviewAdded', payload: {itemId, author, rating, content}}
+{type: 'filters/statusChanged', payload: filterValue}
