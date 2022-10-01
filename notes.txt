@@ -6,12 +6,7 @@ const initialState = {
       title: 'Self-portrait', 
       author: 'John Brown',
       description: 'very nice', 
-      images: [{
-          id: 0,
-          url: './image1.png',
-          isMainImage: false
-        }
-      ],
+      image: './image1.png',
       reviews: [{
           id: 0,
           author: 'Jane Sparrow',
@@ -29,8 +24,8 @@ const initialState = {
 
 ***** ACTIONS *****
 
-{type: 'items/itemAdded', payload: {title, description, images}}
-{type: 'items/itemEdited', payload: {itemId, title, description, images}}
+{type: 'items/itemAdded', payload: {title, description, image}}
+{type: 'items/itemEdited', payload: {itemId, title, description, image}}
 {type: 'items/itemDeleted', payload: itemId}
 {type: 'items/reviewAdded', payload: {itemId, author, rating, content}}
 {type: 'filters/statusChanged', payload: filterValue}
@@ -50,8 +45,5 @@ const initialState = {
 ------<Review>
 --|AddItemPage|
 --|LoginPage|
-----<LoginForm>
---|SignupPage|
-----<SignupForm>
 
 
